@@ -1,0 +1,9 @@
+version: "3.8"
+services:
+  droneapp:
+    image: "droneimage"
+    build: .
+    container_name: "droneapp"
+    ports:
+      - 5173:5173
+    

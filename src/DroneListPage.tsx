@@ -1,13 +1,12 @@
-import React from 'react'
 import { sampleData } from './store/sampleData'
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { store } from './store/store';
+import { RootState } from './store/store';
 
 const DroneListPage = () => {
   const navigate=useNavigate();
   const dronesData=sampleData.drones;
-  const username=useSelector(store=>store.login.username);
+  const username=useSelector((store:RootState)=>store.login.username);
   if(!username){
     return<div className=' h-[90vh] flex flex-col gap-2 justify-center items-center bg-[#121212]'>
         <p className='text-white font-semibold text-2xl'>Login first to see the the drones summary</p>

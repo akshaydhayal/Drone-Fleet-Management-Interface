@@ -6,7 +6,7 @@ const themeStore=createSlice({
         theme:'dark'
     },
     reducers:{
-        changeTheme:(state,action)=>{
+        changeTheme:(state)=>{
             state.theme=='dark'?state.theme='light':state.theme='dark';
         }
     }

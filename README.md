@@ -16,13 +16,13 @@ The **Enhanced Drone Fleet Management Interface** is a web application that allo
 #### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/drone-fleet-management.git
-cd drone-fleet-management
+git clone https://github.com/akshaydhayal/Drone-Fleet-Management-Interface
+cd Drone-Fleet-Management-Interface
 ```
 #### 2. Build and Run the Docker Container
 
 ```bash
-docker-compose up --build
+docker-compose up
 ```
 This will:
 - Build the Docker image from the provided Dockerfile.

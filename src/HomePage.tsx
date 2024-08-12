@@ -1,7 +1,7 @@
 import React from "react";
 import Login from "./components/Login";
 
-const LoginPage = () => {
+const HomePage = () => {
   return (
     <div className="w-screen bg-[#121212] h-[90vh] grid grid-flow-col grid-cols-12 gap-2">
       <div className="col-span-6  px-6 flex flex-col gap-4 h-full">
@@ -29,4 +29,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default HomePage;

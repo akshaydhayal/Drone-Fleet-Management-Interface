@@ -1,18 +1,23 @@
 import React, { useState } from 'react'
 import { sampleData } from '../store/sampleData';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setLoggedUser } from '../store/loggedUserStore';
 
 const Login = () => {
   const [username,setUsername]=useState<string>('');
   const [password,setPassword]=useState<string>('');
 
   const navigate=useNavigate();
+  const dispatch=useDispatch();
+
   function handleLogin(){
     const adminUsername=sampleData.users[0].username;
     const adminPassword=sampleData.users[0].password;
     if(username==adminUsername && password==adminPassword){
       console.log("login success");
-      navigate('/home');
+      dispatch(setLoggedUser(username));
+      navigate('/drones');
     }else{
       console.log("login failed");
     }
@@ -27,8 +32,8 @@ const Login = () => {
         <div className="flex flex-col gap-4">
           <input
             className="p-2 rounded-md bg-[#2d2c2c] text-slate-300 placeholder:text-slate-300  placeholder:px-2"
-            type="email" value={username}
-            placeholder="Email" onChange={(e)=>setUsername(e.target.value)}
+            type="text" value={username}
+            placeholder="Username" onChange={(e)=>setUsername(e.target.value)}
           />
           <input
             className="p-2 rounded-md bg-[#2d2c2c] text-slate-300 placeholder:text-slate-300 placeholder:px-2"
@@ -37,7 +42,7 @@ const Login = () => {
           />
         </div>
           <button className="bg-[#078adc] p-2 rounded-lg text-white font-semibold text-lg"
-          onClick={()=>handleLogin()}>LOGIN</button>
+          onClick={handleLogin}>LOGIN</button>
       </div>
     </div>
   );

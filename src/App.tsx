@@ -1,25 +1,38 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom"
-import Home from "./Home"
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { lazy, Suspense } from "react";
 import Navbar from "./components/Navbar"
-import LoginPage from "./LoginPage"
+// import DronePage from "./DronePage"
+// import DroneListPage from "./DroneListPage"
+import HomePage from "./HomePage"
+import { Provider } from "react-redux";
+import { store } from "./store/store";
+const DronePage=lazy(()=>import("./DronePage"));
+const DroneListPage=lazy(()=>import('./DroneListPage'));
 
 function App() {
 
   const appRouter=createBrowserRouter([
     {
       path:'/',
-      element:<LoginPage/>
+      element:<HomePage/>
     },{
-      path:'/home',
-      element:<Home/>
+      path:'/drones',
+      element:<Suspense fallback={<h1>Loading</h1>}>
+          <DroneListPage/>
+        </Suspense>
+    },{
+      path:'/drones/:droneId',
+      element:<Suspense><DronePage/></Suspense>
     }
   ])
   return (
-    <div>
-      <Navbar/>
-      <RouterProvider router={appRouter}>
-      </RouterProvider>
-    </div>
+    <Provider store={store}>
+      <div>
+        <Navbar/>
+        <RouterProvider router={appRouter}>
+        </RouterProvider>
+      </div>
+    </Provider>
   )
 }
 

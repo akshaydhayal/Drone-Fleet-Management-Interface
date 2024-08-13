@@ -1,50 +1,70 @@
-# React + TypeScript + Vite
+# Enhanced Drone Fleet Management Interface
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
 
-Currently, two official plugins are available:
+The **Enhanced Drone Fleet Management Interface** is a web application that allows users to view and manage the status and details of a drone fleet. The application includes features such as user authentication, drone overview, detailed stats for each drone, maintenance management, and Dockerization for easy setup and deployment.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Installation and Setup
 
-## Expanding the ESLint configuration
+### Prerequisites
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- Ensure you have Docker installed on your machine.
+- Clone the repository to your local machine.
 
-- Configure the top-level `parserOptions` property like this:
+### Running the Application
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+#### 1. Clone the Repository
+
+```bash
+git clone https://github.com/akshaydhayal/Drone-Fleet-Management-Interface
+cd Drone-Fleet-Management-Interface
 ```
+#### 2. Build and Run the Docker Container
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+```bash
+docker-compose up
 ```
+This will:
+- Build the Docker image from the provided Dockerfile.
+- Start the application on port 5173.
+
+#### 3. Access the Application
+  - Open your browser and navigate to http://localhost:5173.
+  - Use the following credentials to log in:
+    - Username: admin
+    - Password: password123
+
+### Project Structure
+
+- `/src`: Contains the React components, pages, and Redux store.
+  - `/src/components`:
+    - `Navbar.tsx`: The navigation bar component, which shows the login/logout option based on the user's authentication status.
+    - `Login.tsx`: The login component where users can enter their credentials to access the drone management interface.
+  - `/src`:
+    - `HomePage.tsx`: The homepage with a welcome message and a login form.
+    - `DroneListPage.tsx`: The page that lists all drones with their status and basic info.
+    - `DronePage.tsx`: The detailed view of a selected drone, showing its stats and maintenance logs.
+  - `/src/store`:
+    - `store.ts`: The Redux store setup, including global state management for logged-in users.
+    - `loggedUserStore.ts`: Redux slice for managing the logged-in user state.
+    - `sampleData.ts`: Contains sample user and drone data used in the application.
+
+
+### Key Dependencies
+
+- **React**: Frontend library for building the user interface.
+- **Redux**: State management library for managing global states, such as user authentication.
+- **Tailwind CSS**: Utility-first CSS framework used for styling the application.
+- **React Icons**: Icon library used for adding icons to the UI components.
+
+### Usage
+
+- After logging in, users can view the list of drones and click on any drone to see detailed information.
+- Maintenance logs are available for each drone, providing insights into the upkeep of the fleet.
+- Users can log out using the logout button in the navigation bar.
+
+### Future Improvements
+
+- Implement user role management for different levels of access.
+- Add the ability to update or add new drones and maintenance logs.
+- Enhance the UI with more interactive features and responsive design.

@@ -1,0 +1,23 @@
+name: "Build CI/CD Pipeline"
+
+on:
+  pull_request:
+    brabches:
+      - "*"
+
+jobs:
+  build:
+    name: "building"
+    runs-on : ubuntu-latest
+    step:
+      - name: "clone the code"
+        uses: actions/checkout@v3
+
+      - name: "use node"
+      - uses: "actions/setup-node@v3"
+        with:
+          node-version: 20
+      - name: "install npm dep"
+        run: npm install
+      - name: "build command"
+        run: npm run build

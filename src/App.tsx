@@ -1,8 +1,6 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import Navbar from "./components/Navbar"
-// import DronePage from "./DronePage"
-// import DroneListPage from "./DroneListPage"
 import HomePage from "./HomePage"
 import { Provider } from "react-redux";
 import { store } from "./store/store";

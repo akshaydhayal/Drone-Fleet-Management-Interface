@@ -3,7 +3,7 @@ name: "Build CI/CD Pipeline"
 on:
   pull_request:
     branches:
-      - "*"
+      - "**"
 
 jobs:
   build:
@@ -20,6 +20,6 @@ jobs:
 
       - name: "install npm dep"
         run: npm install
-        
+
       - name: "build command"
         run: npm run build

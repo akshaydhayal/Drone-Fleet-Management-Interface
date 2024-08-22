@@ -2,12 +2,12 @@ name: "Build CI/CD Pipeline"
 
 on:
   pull_request:
-    brabches:
+    branches:
       - "*"
 
 jobs:
   build:
-    name: "building"
+    name: "CI integrations on PR"
     runs-on : ubuntu-latest
     step:
       - name: "clone the code"
@@ -17,7 +17,9 @@ jobs:
       - uses: "actions/setup-node@v3"
         with:
           node-version: 20
+
       - name: "install npm dep"
         run: npm install
+        
       - name: "build command"
         run: npm run build

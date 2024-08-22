@@ -1,4 +1,4 @@
-name: "Build CI/CD Pipeline"
+name: "Building the code on PR"
 
 on:
   pull_request:
@@ -7,19 +7,85 @@ on:
 
 jobs:
   build:
-    name: "CI integrations on PR"
-    runs-on : ubuntu-latest
-    step:
-      - name: "clone the code"
+    name: "Building the code"
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Checkout and cloning the PR submitted user's code on Github ubuntu machine"
         uses: actions/checkout@v3
 
-      - name: "use node"
-      - uses: "actions/setup-node@v3"
+      - name: "setup node on github machine"
+        uses: actions/setup-node@v3
         with:
           node-version: 20
 
       - name: "install npm dep"
         run: npm install
 
-      - name: "build command"
-        run: npm run build
+      - name : "build the code"
+        run : npm run build
+
+
+
+
+
+
+
+
+
+
+
+
+# name: "Build CI/CD Pipeline"
+
+# on:
+#   pull_request:
+#     branches:
+#       - "**"
+
+# jobs:
+#   build:
+#     name: "CI integrations on PR"
+#     runs-on : ubuntu-latest
+#     steps:
+#       - name: "clone the code"
+#         uses: actions/checkout@v3
+
+#       - name: "use node"
+#       - uses: "actions/setup-node@v3"
+#         with:
+#           node-version: 20
+
+#       - name: "install npm dep"
+#         run: npm install
+
+#       - name: "build command"
+#         run: npm run build
+
+
+
+
+# name: "Build CI/CD Pipeline"
+
+# on:
+#   pull_request:
+#     branches:
+#       - "**"
+
+# jobs:
+#   build:
+#     name: "CI integrations on PR"
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: "Clone the code"
+#         uses: actions/checkout@v3
+
+#       - name: "Set up Node.js"
+#         uses: actions/setup-node@v3
+#         with:
+#           node-version: 20
+
+#       - name: "Install npm dependencies"
+#         run: npm install
+
+#       - name: "Run build command"
+#         run: npm run build
